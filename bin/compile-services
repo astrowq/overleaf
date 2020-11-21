@@ -10,14 +10,10 @@ grep 'name:' config/services.js | \
 		echo "Compiling Service $service"
 		case $service in 
 			web)
-				make compile_full
-				WEBPACK_ENV=production make minify
+				npm run webpack:production
 				;;
-			chat)
-				echo "$service doesn't require a compilation"
-				;;	
 			*)
-				npm run compile:all
+				echo "$service doesn't require a compilation"
 				;;
 		esac	
 		popd
